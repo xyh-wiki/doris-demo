@@ -77,7 +77,9 @@ public class FlinkKafkaToDrois {
             return JSONObject.toJSONString(parsingObject);
         });
 
-        resultStream.print();
+//        resultStream.print();
+
+        resultStream.sinkTo(builder.build());
 
         // 执行 Flink 作业
         env.execute("Flink Kafka to Doris");
