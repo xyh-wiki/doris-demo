@@ -69,6 +69,8 @@ public class FlinkKafkaToDrois {
             String data = kafkaSourceBean.getData();
             JSONObject wsBeanObject = JSONObject.from(kafkaSourceBean.getWsBean());
             JSONObject parsingObject = JSONObject.parseObject(data);
+//            parsingObject.put("content", null);
+//            parsingObject.put("paragraphs", null);
 
             for (String key : wsBeanObject.keySet()) {
                 parsingObject.put(key, wsBeanObject.get(key));
