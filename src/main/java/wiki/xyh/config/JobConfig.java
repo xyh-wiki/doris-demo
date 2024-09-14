@@ -23,16 +23,16 @@ public class JobConfig {
     // 设置 Flink 运行环境
     public static void configureFlinkEnvironment(StreamExecutionEnvironment env, ParameterTool parameterTool) {
 //        env.getConfig().setGlobalJobParameters(parameterTool);
-
-        env.enableCheckpointing(5 * 60 * 1000);
-        env.setStateBackend(new HashMapStateBackend());
-        env.getCheckpointConfig().setCheckpointTimeout(6 * 1000 * 1000);
-        env.getCheckpointConfig().setMinPauseBetweenCheckpoints(1000);
-        env.getCheckpointConfig().setMaxConcurrentCheckpoints(1);
-        env.getCheckpointConfig().setTolerableCheckpointFailureNumber(3);
-        env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3, Time.seconds(10L)));
-        env.getCheckpointConfig().setCheckpointStorage(new FileSystemCheckpointStorage(parameterTool.getRequired("checkpoint.dir")));
-        env.getCheckpointConfig().setExternalizedCheckpointCleanup(CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);
+//        env.enableCheckpointing(0);
+        env.getCheckpointConfig().disableCheckpointing();
+//        env.setStateBackend(new HashMapStateBackend());
+//        env.getCheckpointConfig().setCheckpointTimeout(6 * 1000 * 1000);
+//        env.getCheckpointConfig().setMinPauseBetweenCheckpoints(1000);
+//        env.getCheckpointConfig().setMaxConcurrentCheckpoints(1);
+//        env.getCheckpointConfig().setTolerableCheckpointFailureNumber(3);
+//        env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3, Time.seconds(10L)));
+//        env.getCheckpointConfig().setCheckpointStorage(new FileSystemCheckpointStorage(parameterTool.getRequired("checkpoint.dir")));
+//        env.getCheckpointConfig().setExternalizedCheckpointCleanup(CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);
     }
 
     // Kafka 配置
